@@ -1,0 +1,13 @@
+{
+  "name": "puppeteer-pm25-scrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/wit03/puppeteer-pm25-scrap.git",
+  "author": "Jarukit Jintanasathirakul <witjarukit@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^2.1.0"
+  }
+}
