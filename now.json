@@ -3,8 +3,7 @@
     "name": "Roongaroon-dust-detector",
     "builds": [{
         "src": "app.js",
-        "use": "@now/node-server",
-        "config": { "maxLambdaSize": "50mb" }
+        "use": "@now/node-server"
     }],
     "routes": [{
         "headers": {
