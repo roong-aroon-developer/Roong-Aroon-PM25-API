@@ -35,7 +35,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-body-parser@1.19.0:
+body-parser@1.19.0, body-parser@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -110,6 +110,11 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+
+ddos@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ddos/-/ddos-0.2.1.tgz#8173d3c47ca8f5736fe92ff2595ea31eeb16c826"
+  integrity sha512-IDTS5NBK0PzbYWqXhZyIVkrKGdvC+lEfOUF8HWWDYdvH8pr4s0eQNDNgWmaSQhZWe8GXQcyqujdQXklML4d9LQ==
 
 debug@2.6.9:
   version "2.6.9"
