@@ -41,19 +41,19 @@ var co2Val = 0;
         var co2 = page.$eval('#Rco2Device', data => data.innerText);
         
         pm25.then((result)=> {
-            pm25Val = result;
+            return pm25Val = result;
         });
         pm25Avg.then((result)=> {
-            avgPm25Val = result;
+            return avgPm25Val = result;
         });
         pm10.then((result)=> {
-            pm10Val = result;
+            return pm10Val = result;
         });
         pm10Avg.then((result)=> {
-            avgPm10Val = result;
+            return avgPm10Val = result;
         });
         co2.then((result)=> {
-            co2Val = result;
+            return co2Val = result;
         });
         
         
