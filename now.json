@@ -15,8 +15,7 @@
         "src": "/.*",
         "dest": "/app.js"
     }],
-    "alias": "ra-dust.now.sh",
     "github": {
-        "enabled": false
+        "enabled": true
     }
 }
