@@ -1,48 +1,53 @@
 const express = require('express')
-const request = require('request');
+const fetch = require('node-fetch')
+const ddos = require('ddos')
+const bodyparser = require('body-parser')
+const helmet = require('helmet')
+const { URLSearchParams } = require('url');
 
 const app = express();
+const params = new URLSearchParams();
 
-var data = {
-    lastUpdate: 0,
-    temp: 0,
-    humid: 0,
-    pm25: 0,
-    pm25Avg: 0,
-    pm10: 0,
-    pm10Avg: 0,
-    co2: 0
+const Ddos = new ddos({
+    burst: 30,
+    limit: 30,
+    maxCount: 80,
+    checkInterval: 5,
+    errormessage: "You have been blocked by attemped too many requests"
+})
+
+params.append('site', 24);
+params.append('siteType', 4);
+const settings = {
+    method: 'POST', 
+    body: params
 }
 
-const options = {
-    url: 'http://www.emtrontech.com/iaqnode/getSpecSiteData.php',
-    json: true,
-    form: {
-        site: 24,
-        siteType: 4
-    }
-};
-setInterval(()=>{
-    request.post(options, (err, res, body) => {
-        if (err) {
-            return console.log(err);
-        }
-        data.lastUpdate = body.d.lastUpdate
-        data.temp = body.d.tempDevice
-        data.humid = body.d.RhumidDevice
-        data.pm25 = body.d.Rpm25Device
-        data.pm25Avg = body.d.pm25Device
-        data.pm10 = body.d.Rpm10Device
-        data.pm10Avg = body.d.pm10Device
-        data.co2 = body.d.Rco2Device
-    });    
-}, 3000)
+app.use(Ddos.express)
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+app.use(bodyparser.json());
+app.use(helmet());
 
-app.get('/', (req, res) => {
-    res.status(200).json({
+app.get('/', async(req, res) => {
+    
+    fetch('http://www.emtrontech.com/iaqnode/getSpecSiteData.php', settings)
+    .then(response => response.json())
+    .then(data => res.status(200).json({
         success: true,
-        data: data
-    })
+        lastUpdate: data.d.lastUpdate,
+        temp: data.d.tempDevice,
+        humidity: data.d.RhumidDevice,
+        pm25: data.d.Rpm25Device,
+        pm25Avg: data.d.pm25Device,
+        pm10: data.d.Rpm10Device,
+        pm10Avg: data.d.pm10Device,
+        co2: data.d.Rco2Device
+    }))
+    
+    
+    
 })
 
 app.listen(3000, () => {
