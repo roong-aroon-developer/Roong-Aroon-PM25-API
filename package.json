@@ -11,6 +11,6 @@
     "ddos": "^0.2.1",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
